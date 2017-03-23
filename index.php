@@ -24,23 +24,29 @@
 <?php 
 
 
+
+
+
 // Connect to DB
-if ( isset($_GET )) {
+if ( isset($_GET['letter'] )) {
 	
+$char = $_GET["letter"];
+
 	try {
 		$con = mysqli_connect('127.0.0.1:3306','root','', 'kolekcija');
 
 		// Query string
-		$query = "SELECT * FROM filmovi WHERE Name LIKE ";
+		$query = "SELECT * FROM film WHERE naziv LIKE '%o%'";
 		// Query result
 		$result = mysqli_query($con, $query);
-
+		
+		$record = mysqli_fetch_assoc($result);
+		echo $record["naziv"];
 	} catch ( Exception $err ) {
 			echo $err;
 		}
 
-}
-				// TEST
+						// TEST
 					if ( isset($con) ) {
 						echo "<br/><br/>Connected to the DB <br/><br/><br/>";
 					} else {
@@ -48,23 +54,9 @@ if ( isset($_GET )) {
 					}
 
 
-try {
-if ( isset($_GET['letter']) ) {
-	$char=$_GET['letter'];
-	$con = mysqli_connect('127.0.0.1:3306','root','', 'kolekcija');
-	$query = "SELECT * FROM filmovi";
-	$result = mysqli_query($con, $query);
-	$record = "";
-	print_r($result);
-	var_dump($result);
-	while ( $record =  mysqli_fetch_assoc($result) ) {
 
-		print_r($record["Name"] . "<br>");
-	}
 }
-} catch( Exception $err) {
-	echo $err;
-}
+
 	
 ?>
 
