@@ -36,7 +36,7 @@ $char = $_GET["letter"];
 		$con = mysqli_connect('127.0.0.1:3306','root','', 'kolekcija');
 
 		// Query string
-		$query = "SELECT * FROM film WHERE naziv LIKE '%o%'";
+		$query = "SELECT * FROM film WHERE naziv LIKE 'o%'";  // Add the right var
 		// Query result
 		$result = mysqli_query($con, $query);
 		
