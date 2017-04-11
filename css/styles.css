@@ -1,0 +1,13 @@
+* {
+	text-decoration: none;
+	text-align: center;
+}
+#abc {
+	margin: auto;
+	text-align: center;
+	font-size: 25px;
+}
+
+a {
+	color: blue;
+}
