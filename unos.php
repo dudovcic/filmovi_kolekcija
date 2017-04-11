@@ -40,7 +40,7 @@
 			  </tr>
 			   <tr>
 			    <th>Gumb:</th>
-			    <td><input type="submit"></input></td>
+			    <td><input type="submit" name="submit"></input></td>
 			  </tr>
 
 		</table>
@@ -49,3 +49,25 @@
 
 </body>
 </html>
+
+
+<?php 
+
+if ( isset( $_POST['submit'] )) {
+
+	$naslov = $_POST['naslov'];
+	$zanr = $_POST['zanr'];
+	$godina = $_POST['godina'];
+	$trajanje = $_POST['trajanje'];
+	$slika = $_POST['slika'];
+
+	$con = mysqli_connect('127.0.0.1:3306','root','', 'kolekcija');
+
+	$query = "INSERT INTO filmovi ( naslov, id_zanr, godina, trajanje, slika ) VALUES ( '$naslov', 2, '$godina', '$trajanje', '$slika' )";
+
+	mysqli_query($con, $query);
+}
+
+
+
+ ?>
