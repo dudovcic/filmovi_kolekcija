@@ -2,6 +2,7 @@
 	text-decoration: none;
 	text-align: center;
 }
+
 #abc {
 	margin: auto;
 	text-align: center;
@@ -10,4 +11,22 @@
 
 a {
 	color: blue;
+}
+
+th, td {
+	border: 1px solid black;
+	padding: 0;
+	margin: 0;
+}
+table {
+	border-collapse: collapse;
+}
+
+
+#table {
+	margin: auto;
+}
+
+#table form table input {
+	text-align: left;
 }
