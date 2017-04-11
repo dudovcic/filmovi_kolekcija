@@ -36,12 +36,16 @@ $char = $_GET["letter"];
 		$con = mysqli_connect('127.0.0.1:3306','root','', 'kolekcija');
 
 		// Query string
-		$query = "SELECT * FROM film WHERE naziv LIKE 'o%'";  // Add the right var
+
+		$query = "SELECT * FROM filmovi WHERE naslov LIKE '$char%'";
+
 		// Query result
 		$result = mysqli_query($con, $query);
 		
-		$record = mysqli_fetch_assoc($result);
-		echo $record["naziv"];
+		while ($row = mysqli_fetch_assoc($result) ) {
+
+			print_r( $row['naslov'] );
+		}
 	} catch ( Exception $err ) {
 			echo $err;
 		}
@@ -49,6 +53,7 @@ $char = $_GET["letter"];
 						// TEST
 					if ( isset($con) ) {
 						echo "<br/><br/>Connected to the DB <br/><br/><br/>";
+						echo $char;
 					} else {
 						echo "Failed connecting to the DB";
 					}
