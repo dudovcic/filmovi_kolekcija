@@ -1,3 +1,4 @@
 # filmovi_kolekcija
 
-## Seminar za Algebru
+ Seminar Algebra
+
