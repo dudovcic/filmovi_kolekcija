@@ -18,20 +18,28 @@ USE `kolekcija`;
 
 -- Dumping structure for table kolekcija.filmovi
 CREATE TABLE IF NOT EXISTS `filmovi` (
-  `id` int(5) NOT NULL,
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `naslov` varchar(200) COLLATE utf8_croatian_ci NOT NULL,
   `id_zanr` int(10) NOT NULL,
   `godina` year(4) NOT NULL,
   `trajanje` int(5) NOT NULL,
   `slika` varchar(50) COLLATE utf8_croatian_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
--- Dumping data for table kolekcija.filmovi: ~0 rows (approximately)
+-- Dumping data for table kolekcija.filmovi: ~11 rows (approximately)
 /*!40000 ALTER TABLE `filmovi` DISABLE KEYS */;
 INSERT INTO `filmovi` (`id`, `naslov`, `id_zanr`, `godina`, `trajanje`, `slika`) VALUES
-	(0, 'Stuart Little', 10, '2015', 122, 'C:/files/asdasd.mwa'),
-	(1, 'John Wick', 10, '2015', 122, 'C:/files/asdasd.mwa');
+	(1, 'Firewall', 1, '2006', 105, 'img/firewall_2006.jpg'),
+	(2, 'Antitrust', 2, '2001', 103, 'img/antitrust_2001.jpg'),
+	(3, 'Hackers', 1, '1995', 99, 'img/hackers_1995.jpg'),
+	(4, 'War games', 4, '1983', 96, 'img/war_games_1983.jpg'),
+	(5, 'Operation sword', 5, '2001', 90, 'img/operation_swordfish_2001.jpg'),
+	(6, 'Tron Legacy', 3, '2010', 113, 'img/tron_legacy_2010.jpg'),
+	(7, 'Operation Taledo', 1, '2000', 101, 'img/operation_takedown_2000.jpg'),
+	(8, 'Pirates of Silicon Valey', 2, '1999', 85, 'img/pirates_of_silicone_valley_1999.jpg'),
+	(9, 'The social network', 3, '2010', 106, 'img/the_social_network_2010.jpg'),
+	(10, 'Tron', 1, '1982', 111, 'img/tron_1982.jpg');
 /*!40000 ALTER TABLE `filmovi` ENABLE KEYS */;
 
 -- Dumping structure for table kolekcija.zanr
@@ -41,8 +49,12 @@ CREATE TABLE IF NOT EXISTS `zanr` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
--- Dumping data for table kolekcija.zanr: ~0 rows (approximately)
+-- Dumping data for table kolekcija.zanr: ~3 rows (approximately)
 /*!40000 ALTER TABLE `zanr` DISABLE KEYS */;
+INSERT INTO `zanr` (`id`, `naziv`) VALUES
+	(1, 'Akcija'),
+	(2, 'Fantazija'),
+	(3, 'Drama');
 /*!40000 ALTER TABLE `zanr` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
