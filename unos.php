@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="table">
-	<form method="POST" action="unos.php" id="unos">
+	<form method="POST" action="unos.php" id="unos" enctype="multipart/form-data">
 		<table>
 
 			 <tr>
@@ -53,19 +53,24 @@
 
 <?php 
 
+
 if ( isset( $_POST['submit'] )) {
+
+	move_uploaded_file($_FILES['slika']['tmp_name'],"img/".$_FILES['slika']['name']);
 
 	$naslov = $_POST['naslov'];
 	$zanr = $_POST['zanr'];
 	$godina = $_POST['godina'];
 	$trajanje = $_POST['trajanje'];
-	$slika = $_POST['slika'];
+	$slika = $_FILES['slika']['name'];
 
 	$con = mysqli_connect('127.0.0.1:3306','root','', 'kolekcija');
 
-	$query = "INSERT INTO filmovi ( naslov, id_zanr, godina, trajanje, slika ) VALUES ( '$naslov', 2, '$godina', '$trajanje', '$slika' )";
+	$query = "INSERT INTO filmovi ( naslov, id_zanr, godina, trajanje, slika ) VALUES ( '$naslov', 2, '$godina', '$trajanje', 'img/$slika' )";
 
 	mysqli_query($con, $query);
+
+
 }
 
 

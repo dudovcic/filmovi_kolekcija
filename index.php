@@ -73,15 +73,6 @@ $char = $_GET["letter"];
 			echo $err;
 		}
 
-						// TEST
-					// if ( isset($con) ) {
-					// 	echo "<br/><br/>Connected to the DB <br/><br/><br/>";
-					// 	echo $char;
-					// } else {
-					// 	echo "Failed connecting to the DB";
-					// }
-
-
 
 }
 
@@ -129,13 +120,22 @@ for ( i = 0; i < x.length; i++) {
 <?php 
 
 if(isset($_POST['naslov'])) {
-	$conn = mysqli_connect('127.0.0.1:3306','root','', 'kolekcija');
-
-
+	// $conn = mysqli_connect('127.0.0.1:3306','root','', 'kolekcija');
+	$con = mysqli_connect('127.0.0.1:3306','root','', 'kolekcija');
 	$data = $_POST['naslov'];
+
+	$res = mysqli_query($con, "SELECT slika FROM filmovi WHERE naslov LIKE '$data'");
+	unlink(mysqli_fetch_row($res)[0]);
+
+
+	
 	$query2 = "DELETE FROM filmovi WHERE naslov LIKE '$data'";
 
-	mysqli_query($conn, $query2);
+	mysqli_query($con, $query2);
+
+
+
+
 }
 
 
