@@ -40,11 +40,35 @@ $char = $_GET["letter"];
 		$query = "SELECT * FROM filmovi WHERE naslov LIKE '$char%'";
 		// Query result
 		$result = mysqli_query($con, $query);
+
+		echo "<table>"
+		."<tr>"
+			."<td>Slika</td>"
+			."<td>Naslov filma</td>"
+			."<td>Godina</td>"
+			."<td>Trajanje</td>"
+			."<td>Akcija</td>"
+		."</tr>";
 		
 		while ($row = mysqli_fetch_assoc($result) ) {
 
-			print_r( $row['naslov'] );
+			//print_r( $row['naslov'] );
+
+			echo 
+			"<tr>"
+
+				."<td>".$row['slika']."</td>"
+				."<td>".$row['naslov']."</td>"
+				."<td>".$row['godina']."</td>"
+				."<td>".$row['trajanje']."</td>"
+				."<td>".$row['id_zanr']."</td>"
+
+			."</tr>";
+
+
 		}
+
+		echo "</table>";
 	} catch ( Exception $err ) {
 			echo $err;
 		}
