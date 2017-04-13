@@ -60,8 +60,8 @@ $char = $_GET["letter"];
 				."<td>"."<img src='".$row['slika']."'/>"."</td>"
 				."<td>".$row['naslov']."</td>"
 				."<td>".$row['godina']."</td>"
-				."<td>".$row['trajanje']."</td>"
-				."<td>".$row['id_zanr']."</td>"
+				."<td>".$row['trajanje']." min"."</td>"
+				."<td>". "<a href='#' class='obrisi'>[ obriši ]</a>" ."</td>"
 
 			."</tr>";
 
@@ -90,5 +90,53 @@ $char = $_GET["letter"];
 
 </div>
 </body>
+<script type="text/javascript">
+
+
+var x = document.getElementsByClassName("obrisi");
+
+for ( i = 0; i < x.length; i++) {
+
+	x[i].addEventListener("click", function(e) {
+		e.preventDefault();
+		console.log("clicked " + e.target.innerHTML);
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "index.php", false );
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhr.onreadystatechange = function() {
+			if ( xhr.readyState == 4 && xhr.status == 200) {
+				e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode);
+				console.log(e.target.parentNode.parentNode.childNodes[1].innerHTML);
+			}
+
+		}
+
+		xhr.send('naslov='+e.target.parentNode.parentNode.childNodes[1].innerHTML);
+
+
+	} ,false)
+
+}
+
+
+
+</script>
+
+
 </html>
 
+
+<?php 
+
+if(isset($_POST['naslov'])) {
+	$conn = mysqli_connect('127.0.0.1:3306','root','', 'kolekcija');
+
+
+	$data = $_POST['naslov'];
+	$query2 = "DELETE FROM filmovi WHERE naslov LIKE '$data'";
+
+	mysqli_query($conn, $query2);
+}
+
+
+ ?>
