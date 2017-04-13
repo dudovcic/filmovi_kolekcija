@@ -30,3 +30,12 @@ table {
 #table form table input {
 	text-align: left;
 }
+
+#showit {
+	width: 400px;
+	margin: 50px auto;
+}
+
+img {
+	width: 50px;
+}

@@ -41,7 +41,7 @@ $char = $_GET["letter"];
 		// Query result
 		$result = mysqli_query($con, $query);
 
-		echo "<table>"
+		echo "<table id='showit'>"
 		."<tr>"
 			."<td>Slika</td>"
 			."<td>Naslov filma</td>"
@@ -57,7 +57,7 @@ $char = $_GET["letter"];
 			echo 
 			"<tr>"
 
-				."<td>".$row['slika']."</td>"
+				."<td>"."<img src='".$row['slika']."'/>"."</td>"
 				."<td>".$row['naslov']."</td>"
 				."<td>".$row['godina']."</td>"
 				."<td>".$row['trajanje']."</td>"
@@ -74,12 +74,12 @@ $char = $_GET["letter"];
 		}
 
 						// TEST
-					if ( isset($con) ) {
-						echo "<br/><br/>Connected to the DB <br/><br/><br/>";
-						echo $char;
-					} else {
-						echo "Failed connecting to the DB";
-					}
+					// if ( isset($con) ) {
+					// 	echo "<br/><br/>Connected to the DB <br/><br/><br/>";
+					// 	echo $char;
+					// } else {
+					// 	echo "Failed connecting to the DB";
+					// }
 
 
 
